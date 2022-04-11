@@ -1,0 +1,9 @@
+<h1>Nova Ação</h1>
+
+<%= render "form", material_log: @material_log %>
+
+<br>
+
+<div>
+  <%= link_to "Voltar para ações", material_material_logs_path(material_id: @material.id) %>
+</div>

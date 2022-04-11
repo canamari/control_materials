@@ -1,0 +1,32 @@
+
+<h1>Material logs</h1>
+
+
+<button type="button" class="btn btn-outline-success"><%= link_to "Nova Ação", new_material_material_log_path(material_id: @material.id) %></button>
+<button type="button" class="btn btn-outline-danger"><%= link_to "Voltar para materiais", materials_path %></button>
+<br>
+<br>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">quantidade</th>
+      <th scope="col">Ação</th>
+      <th scope="col">Usuario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @material_logs.each do |material_log| %>
+      <%= render material_log %>
+      <tr>
+        <td><%=material_log.id%></td>
+        <td><%=material_log.quantity%></td>
+        <td><%=material_log.action? ? 'Adicionado' : 'Retirado'%></td>
+        <td><%=material_log.user.user_name%></td>
+       </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @material_logs %>
+

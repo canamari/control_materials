@@ -1,0 +1,28 @@
+<%= form_with(model: [@material, @material_log]) do |f| %>
+  <% if material_log.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(material_log.errors.count, "error") %> prohibited this material_log from being saved:</h2>
+
+      <ul>
+        <% material_log.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :quantidade %>
+    <%= f.text_field :quantity %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :ação %>
+    <%= f.select :action, [['Adicionar', true ], ['Retirar', false ]] %>
+  </div>
+  
+
+  <div>
+    <%= f.submit 'Cadastrar' %>
+  </div>
+<% end %>

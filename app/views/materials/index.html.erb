@@ -1,0 +1,32 @@
+<h1>Materiais</h1>
+
+<button type="button" class="btn btn-outline-success"><%= link_to "Novo material", new_material_path %></button>
+<br>
+<br>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Quantidade em estoque</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @materials.each do |material| %>
+      <%= render material %>
+      <tr>
+        <td><%=material.id%></td>
+        <td><%=material.name%></td>
+        <td><%=material.quantity%></td>
+        <td>
+          <%= link_to "logs", material_material_logs_path(material_id: material.id) %>
+          <%= link_to "Editar", edit_material_path(id: material.id) %>
+        </td>
+       </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @materials %>
+
